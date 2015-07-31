@@ -11,15 +11,19 @@
 
 @class AwwPost;
 
-/// PostsBlock should contain an array of AwwPost objects if nil error.
+/** PostsBlock should contain an array of AwwPost objects if nil error. */
 typedef void (^PostsBlock)(NSArray*, NSError*);
 typedef void (^ThumbnailBlock)(UIImage*);
 
 @interface AwwApi : NSObject
 
-extern NSString* const kErrorUserInfoKey;
+extern NSString* const kAwwApiErrorUserInfoKey;
 
+/** Loads posts from reddit in a given subreddit. Delivers completion on main thread. */
 + (void)postsInSubreddit:(NSString*)subreddit completion:(PostsBlock)completion;
+
+/** Loads posts from reddit in a given subreddit. Delivers completion on main thread.
+ Caches requests based on url */
 + (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion;
 
 @end

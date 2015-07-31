@@ -55,7 +55,7 @@
 }
 
 - (void)prepareForReuse {
-    [AwwApi cancelThumbnailCompletionForPost:_post];
+    [AwwApi cancelImageCompletionForURL:_post.thumbnailURL];
     
     [super prepareForReuse];
 }
@@ -66,7 +66,7 @@
     _postTitleLabel.text = post.title;
    
     _thumbnailImageView.image = nil;
-    [AwwApi thumbnailForPost:post completion:^(UIImage *image) {
+    [AwwApi imageAtURL:post.thumbnailURL completion:^(UIImage *image) {
         self.thumbnailImageView.image = image;
         [self setNeedsLayout];
         [self layoutIfNeeded];

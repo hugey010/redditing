@@ -42,7 +42,7 @@
 
 - (void)testNilPostThumbnails {
     XCTestExpectation* expectationNilPost = [self expectationWithDescription:@"Error expectation"];
-    [AwwApi thumbnailForPost:nil completion:^(UIImage *image) {
+    [AwwApi imageAtURL:nil completion:^(UIImage *image) {
         XCTAssert(image == nil, @"Shouldn't be an image");
         [expectationNilPost fulfill];
     }];
@@ -50,7 +50,7 @@
    
     XCTestExpectation* expectationNilThumbnail = [self expectationWithDescription:@"Error expectation"];
     AwwPost* emptyPost = [[AwwPost alloc] initWithDictionary:nil];
-    [AwwApi thumbnailForPost:emptyPost completion:^(UIImage *image) {
+    [AwwApi imageAtURL:emptyPost.thumbnailURL completion:^(UIImage *image) {
         XCTAssert(image == nil, @"Shouldn't be an image");
         [expectationNilThumbnail fulfill];
     }];
@@ -62,12 +62,12 @@
     AwwPost* goodPost = [self goodPostObject];
     
     XCTestExpectation* expectationSlow = [self expectationWithDescription:@"Slow web expectation"];
-    [AwwApi thumbnailForPost:goodPost completion:^(UIImage *image) {
+    [AwwApi imageAtURL:goodPost.thumbnailURL completion:^(UIImage *image) {
         XCTAssert(image != nil, @"Should be an image");
         [expectationSlow fulfill];
         
         XCTestExpectation* expectationFast = [self expectationWithDescription:@"Fast cache expectation"];
-        [AwwApi thumbnailForPost:goodPost completion:^(UIImage *cachedImage) {
+        [AwwApi imageAtURL:goodPost.thumbnailURL completion:^(UIImage *cachedImage) {
             XCTAssert(cachedImage != nil, @"Should be an image");
             XCTAssert([cachedImage isEqual:image] && cachedImage == cachedImage, @"Cached images should be the same");
             [expectationFast fulfill];
@@ -84,12 +84,12 @@
     AwwPost* goodPost = [self goodPostObject];
     
     XCTestExpectation* expectation = [self expectationWithDescription:@"Slow web expectation"];
-    [AwwApi thumbnailForPost:goodPost completion:^(UIImage *image) {
+    [AwwApi imageAtURL:goodPost.thumbnailURL completion:^(UIImage *image) {
         // should never get called
         XCTAssert(NO, @"Should never get called");
         [expectation fulfill];
     }];
-    [AwwApi cancelThumbnailCompletionForPost:goodPost];
+    [AwwApi cancelImageCompletionForURL:goodPost.thumbnailURL];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [expectation fulfill];

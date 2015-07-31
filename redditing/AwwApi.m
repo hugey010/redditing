@@ -67,17 +67,19 @@ static NSRange successRange;
     }];
 }
 
-+ (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion {
-    if (post.urlString) {
-        [canceledThumbnails removeObjectForKey:post.urlString];
++ (void)imageAtURL:(NSURL*)url completion:(ImageBlock)completion {
+    NSString* urlString = [NSString stringWithFormat:@"%@", url];
+    
+    if (urlString) {
+        [canceledThumbnails removeObjectForKey:urlString];
     }
     
-    if (thumbnails[post.urlString]) {
-        if (!canceledThumbnails[post.urlString]) {
-            completion(thumbnails[post.urlString]);
+    if (thumbnails[urlString]) {
+        if (!canceledThumbnails[urlString]) {
+            completion(thumbnails[urlString]);
         }
     } else {
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:post.thumbnailURL];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -86,16 +88,16 @@ static NSRange successRange;
             if (!connectionError && NSLocationInRange(statusCode, successRange)) {
                 UIImage* image = [UIImage imageWithData:data];
                 if (image) {
-                    thumbnails[post.urlString] = image;
+                    thumbnails[urlString] = image;
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (!canceledThumbnails[post.urlString]) {
+                    if (!canceledThumbnails[urlString]) {
                         completion(image);
                     }
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (!canceledThumbnails[post.urlString]) {
+                    if (!canceledThumbnails[urlString]) {
                         completion(nil);
                     }
                 });
@@ -104,8 +106,9 @@ static NSRange successRange;
     }
 }
 
-+ (void)cancelThumbnailCompletionForPost:(AwwPost*)post {
-    canceledThumbnails[post.urlString] = @(YES);
++ (void)cancelImageCompletionForURL:(NSURL*)url {
+    NSString* urlString = [NSString stringWithFormat:@"%@", url];
+    canceledThumbnails[urlString] = @(YES);
 }
 
 + (void)clearThumbnailCache {

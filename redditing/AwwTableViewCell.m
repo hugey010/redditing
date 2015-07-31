@@ -41,8 +41,8 @@
                              @"min" : @(40),
                               @"tightPadding" : @(2)
                              };
-    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-tightPadding-[_thumbnailImageView(>=min)]-tightPadding-|" options:kNilOptions metrics:metrics views:views]];
-    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-padding-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-tightPadding-[_thumbnailImageView]-tightPadding@999-|" options:kNilOptions metrics:metrics views:views]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-padding-[_postTitleLabel]-padding@999-|" options:kNilOptions metrics:metrics views:views]];
     [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[_thumbnailImageView(80)]-spacing-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
     NSLayoutConstraint* thumbnailSquareConstraint = [NSLayoutConstraint constraintWithItem:_thumbnailImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_thumbnailImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
     [_thumbnailImageView addConstraint:thumbnailSquareConstraint];

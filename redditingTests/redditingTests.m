@@ -2,7 +2,8 @@
 //  redditingTests.m
 //  redditingTests
 //
-//  Copyright (c) 2014 Beam Technologies. All rights reserved.
+//  Created by Hugey on 7/31/15.
+//  Copyright (c) 2015 Beam Technologies. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

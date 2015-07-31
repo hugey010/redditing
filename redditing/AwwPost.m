@@ -21,8 +21,7 @@
     _url = [NSURL URLWithString:dataDict[@"url"]];
     
     // I really with i knew a good way to play gifs!
-    if (![[_url.pathExtension lowercaseString] isEqualToString:@"jpg"] &&
-        ![[_url.pathExtension lowercaseString] isEqualToString:@"png"]) {
+    if (![[_url.pathExtension lowercaseString] isEqualToString:@"jpg"]) {
         _url = _thumbnailURL;
     }
     

@@ -9,10 +9,12 @@
 #import "AwwTableViewCell.h"
 #import "AwwPost.h"
 #import "AwwApi.h"
+#import "AwwPopupView.h"
 
 @interface AwwTableViewController ()  <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *redditPosts;
+@property (nonatomic, strong) AwwPopupView* blownUpView;
 
 @end
 
@@ -36,7 +38,7 @@ static NSString* const cellIdentifier = @"cell";
             self.redditPosts = posts;
             [self.tableView reloadData];
         } else {
-            
+            [[[UIAlertView alloc] initWithTitle:@"Oops" message:error.userInfo[kAwwApiErrorUserInfoKey] delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
         }
     }];
 }
@@ -45,6 +47,32 @@ static NSString* const cellIdentifier = @"cell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (_blownUpView) {
+        [_blownUpView removeFromSuperview];
+    }
+    
+    // showing the bigger view with a cool animation
+    CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
+    CGRect startRect = CGRectMake(cellRect.origin.x + 8, cellRect.origin.y + 2, 80, 80);
+    
+
+    AwwPost* post = self.redditPosts[indexPath.row];
+    
+    CGRect frame = self.view.frame;
+    CGRect endRect = CGRectMake(frame.size.width / 2.0 - 150, frame.size.height / 2.0 - 150 + tableView.contentOffset.y, 300, 300);
+    
+    _blownUpView = [[AwwPopupView alloc] initWithURL:post.thumbnailURL];
+    [self.view addSubview:_blownUpView];
+    [_blownUpView performAnimationFromRect:startRect toRect:endRect];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (_blownUpView) {
+        [_blownUpView removeFromSuperview];
+    }
 }
 
 #pragma mark - UITableViewDataSource

@@ -17,6 +17,7 @@
     NSDictionary* dataDict = dictionary[@"data"];
     _title = dataDict[@"title"];
     _thumbnailURL = [NSURL URLWithString:dataDict[@"thumbnail"]];
+    _url = [NSURL URLWithString:dataDict[@"url"]];
     
     return self;
 }

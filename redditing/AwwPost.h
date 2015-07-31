@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy, readonly) NSString* title;
 @property (nonatomic, strong, readonly) NSURL* thumbnailURL;
+@property (nonatomic, strong, readonly) NSURL* url;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary NS_DESIGNATED_INITIALIZER;
 

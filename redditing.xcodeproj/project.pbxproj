@@ -12,6 +12,7 @@
 		1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */; };
 		1E67C2CA1B6B158E00012A3A /* AwwPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C91B6B158E00012A3A /* AwwPost.m */; };
 		1E72B7C71B6B3E570059F4DE /* AwwApiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E72B7C61B6B3E570059F4DE /* AwwApiTests.m */; };
+		1E72B7CA1B6B59620059F4DE /* AwwPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E72B7C91B6B59620059F4DE /* AwwPopupView.m */; };
 		4D66A59C1A4328DD00C35E75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59B1A4328DD00C35E75 /* main.m */; };
 		4D66A59F1A4328DD00C35E75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59E1A4328DD00C35E75 /* AppDelegate.m */; };
 		4D66A5A21A4328DD00C35E75 /* AwwTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */; };
@@ -42,6 +43,8 @@
 		1E67C2C81B6B158E00012A3A /* AwwPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwPost.h; sourceTree = "<group>"; };
 		1E67C2C91B6B158E00012A3A /* AwwPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwPost.m; sourceTree = "<group>"; };
 		1E72B7C61B6B3E570059F4DE /* AwwApiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwApiTests.m; sourceTree = "<group>"; };
+		1E72B7C81B6B59620059F4DE /* AwwPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwPopupView.h; sourceTree = "<group>"; };
+		1E72B7C91B6B59620059F4DE /* AwwPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwPopupView.m; sourceTree = "<group>"; };
 		4D66A5961A4328DD00C35E75 /* Redditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D66A59A1A4328DD00C35E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D66A59B1A4328DD00C35E75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */,
 				1E67C2C51B6B148800012A3A /* AwwTableViewCell.h */,
 				1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */,
+				1E72B7C81B6B59620059F4DE /* AwwPopupView.h */,
+				1E72B7C91B6B59620059F4DE /* AwwPopupView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				4D66A59C1A4328DD00C35E75 /* main.m in Sources */,
 				1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */,
 				1E67C2CA1B6B158E00012A3A /* AwwPost.m in Sources */,
+				1E72B7CA1B6B59620059F4DE /* AwwPopupView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

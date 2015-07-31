@@ -94,6 +94,10 @@ static NSRange successRange;
     }
 }
 
++ (void)clearThumbnailCache {
+    thumbnails = [NSMutableDictionary dictionary];
+}
+
 #pragma mark - private
 
 + (NSError*)errorWithStatusCode:(NSInteger)code andMessage:(NSString*)message {

@@ -27,4 +27,7 @@ extern NSString* const kAwwApiErrorUserInfoKey;
     Completion block must NOT be nil */
 + (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion;
 
+/** clears the thumbnail cache, normally just used in testing */
++ (void)clearThumbnailCache;
+
 @end

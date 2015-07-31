@@ -65,12 +65,38 @@
     }];
 }
 
-- (void)testSuccessThumbnail {
+- (void)testSuccessAndCacheThumbnail {
+    [AwwApi clearThumbnailCache];
+    AwwPost* goodPost = [self goodPostObject];
     
+    XCTestExpectation* expectationSlow = [self expectationWithDescription:@"Slow web expectation"];
+    [AwwApi thumbnailForPost:goodPost completion:^(UIImage *image) {
+        XCTAssert(image != nil, @"Should be an image");
+        [expectationSlow fulfill];
+        
+        XCTestExpectation* expectationFast = [self expectationWithDescription:@"Fast cache expectation"];
+        [AwwApi thumbnailForPost:goodPost completion:^(UIImage *cachedImage) {
+            XCTAssert(cachedImage != nil, @"Should be an image");
+            XCTAssert([cachedImage isEqual:image] && cachedImage == cachedImage, @"Cached images should be the same");
+            [expectationFast fulfill];
+        }];
+         
+        [self waitForExpectationsWithTimeout:0.001 handler:^(NSError *error) {
+            XCTAssert(error == nil, @"Should have fulfilled fast cache expectation");
+        }];
+    }];
+    
+    [self waitForExpectationsWithTimeout:4 handler:^(NSError *error) {
+        XCTAssert(error == nil, @"Should have fulfilled expectation");
+    }];
 }
 
-- (void)testCacheThumbnail {
-    
+- (AwwPost*)goodPostObject {
+    return [[AwwPost alloc] initWithDictionary:@{@"data" :
+                                                     @{@"title" : @"a title",
+                                                       @"thumbnail" : @"http://i.imgur.com/b6uguiv.jpg"
+                                                       }
+                                                 }];
 }
 
 @end

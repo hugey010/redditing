@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@class AwwPost;
+
+/// PostsBlock should contain an array of AwwPost objects if nil error.
+typedef void (^PostsBlock)(NSArray*, NSError*);
+typedef void (^ThumbnailBlock)(UIImage*);
 
 @interface AwwApi : NSObject
+
+extern NSString* const kErrorUserInfoKey;
+
++ (void)postsInSubreddit:(NSString*)subreddit completion:(PostsBlock)completion;
++ (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion;
 
 @end

@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AwwTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AwwTableViewController : UITableViewController
 
 
 @end

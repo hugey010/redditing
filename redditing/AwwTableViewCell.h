@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class AwwPost;
+
 @interface AwwTableViewCell : UITableViewCell
+
+- (void)setupWithPost:(AwwPost*)post;
 
 @end

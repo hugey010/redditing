@@ -10,4 +10,9 @@
 
 @interface AwwPost : NSObject
 
+@property (nonatomic, copy, readonly) NSString* title;
+@property (nonatomic, strong, readonly) NSURL* thumbnailURL;
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary NS_DESIGNATED_INITIALIZER;
+
 @end

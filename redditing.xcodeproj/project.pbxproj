@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E56146C1B6B203500AB53BC /* AwwApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E56146B1B6B203500AB53BC /* AwwApi.m */; };
+		1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */; };
+		1E67C2CA1B6B158E00012A3A /* AwwPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C91B6B158E00012A3A /* AwwPost.m */; };
 		4D66A59C1A4328DD00C35E75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59B1A4328DD00C35E75 /* main.m */; };
 		4D66A59F1A4328DD00C35E75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59E1A4328DD00C35E75 /* AppDelegate.m */; };
 		4D66A5A21A4328DD00C35E75 /* AwwTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */; };
@@ -27,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E56146A1B6B203500AB53BC /* AwwApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwApi.h; sourceTree = "<group>"; };
+		1E56146B1B6B203500AB53BC /* AwwApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwApi.m; sourceTree = "<group>"; };
+		1E67C2C51B6B148800012A3A /* AwwTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwTableViewCell.h; sourceTree = "<group>"; };
+		1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwTableViewCell.m; sourceTree = "<group>"; };
+		1E67C2C81B6B158E00012A3A /* AwwPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwPost.h; sourceTree = "<group>"; };
+		1E67C2C91B6B158E00012A3A /* AwwPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwPost.m; sourceTree = "<group>"; };
 		4D66A5961A4328DD00C35E75 /* Redditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D66A59A1A4328DD00C35E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D66A59B1A4328DD00C35E75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,11 +69,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1EE13CCE1B6AF992004821DE /* Classes */ = {
+		1E5614691B6B201F00AB53BC /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				1E56146A1B6B203500AB53BC /* AwwApi.h */,
+				1E56146B1B6B203500AB53BC /* AwwApi.m */,
 			);
-			name = Classes;
+			name = Api;
+			sourceTree = "<group>";
+		};
+		1E67C2CB1B6B159B00012A3A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D66A5A01A4328DD00C35E75 /* AwwTableViewController.h */,
+				4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1E67C2CC1B6B15A000012A3A /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				1E67C2C51B6B148800012A3A /* AwwTableViewCell.h */,
+				1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */,
+			);
+			name = UIViews;
+			sourceTree = "<group>";
+		};
+		1EE13CCE1B6AF992004821DE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E67C2C81B6B158E00012A3A /* AwwPost.h */,
+				1E67C2C91B6B158E00012A3A /* AwwPost.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		4D66A58D1A4328DD00C35E75 = {
@@ -88,11 +126,12 @@
 		4D66A5981A4328DD00C35E75 /* redditing */ = {
 			isa = PBXGroup;
 			children = (
-				1EE13CCE1B6AF992004821DE /* Classes */,
+				1E5614691B6B201F00AB53BC /* Api */,
+				1E67C2CC1B6B15A000012A3A /* UIViews */,
+				1E67C2CB1B6B159B00012A3A /* Controllers */,
+				1EE13CCE1B6AF992004821DE /* Models */,
 				4D66A59D1A4328DD00C35E75 /* AppDelegate.h */,
 				4D66A59E1A4328DD00C35E75 /* AppDelegate.m */,
-				4D66A5A01A4328DD00C35E75 /* AwwTableViewController.h */,
-				4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */,
 				4D66A5A61A4328DD00C35E75 /* Main.storyboard */,
 				4D66A5A91A4328DD00C35E75 /* Images.xcassets */,
 				4D66A5AB1A4328DD00C35E75 /* LaunchScreen.xib */,
@@ -227,9 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E56146C1B6B203500AB53BC /* AwwApi.m in Sources */,
 				4D66A59F1A4328DD00C35E75 /* AppDelegate.m in Sources */,
 				4D66A5A21A4328DD00C35E75 /* AwwTableViewController.m in Sources */,
 				4D66A59C1A4328DD00C35E75 /* main.m in Sources */,
+				1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */,
+				1E67C2CA1B6B158E00012A3A /* AwwPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

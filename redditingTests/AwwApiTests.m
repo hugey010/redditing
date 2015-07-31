@@ -26,9 +26,7 @@
         [expectation fulfill];
     }];
     
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        XCTAssert(error == nil, @"Should have fulfilled expectation");
-    }];
+    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {}];
 }
 
 - (void)testSuccessCSGOPosts {
@@ -39,9 +37,7 @@
         [expectation fulfill];
     }];
     
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        XCTAssert(error == nil, @"Should have fulfilled expectation");
-    }];
+    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {}];
 }
 
 - (void)testNilPostThumbnails {
@@ -50,9 +46,7 @@
         XCTAssert(image == nil, @"Shouldn't be an image");
         [expectationNilPost fulfill];
     }];
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        XCTAssert(error == nil, @"Should have fulfilled expectation");
-    }];
+    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {}];
    
     XCTestExpectation* expectationNilThumbnail = [self expectationWithDescription:@"Error expectation"];
     AwwPost* emptyPost = [[AwwPost alloc] initWithDictionary:nil];
@@ -60,9 +54,7 @@
         XCTAssert(image == nil, @"Shouldn't be an image");
         [expectationNilThumbnail fulfill];
     }];
-    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {
-        XCTAssert(error == nil, @"Should have fulfilled expectation");
-    }];
+    [self waitForExpectationsWithTimeout:2.0 handler:^(NSError *error) {}];
 }
 
 - (void)testSuccessAndCacheThumbnail {
@@ -81,13 +73,30 @@
             [expectationFast fulfill];
         }];
          
-        [self waitForExpectationsWithTimeout:0.001 handler:^(NSError *error) {
-            XCTAssert(error == nil, @"Should have fulfilled fast cache expectation");
-        }];
+        [self waitForExpectationsWithTimeout:0.001 handler:^(NSError *error) {}];
     }];
     
-    [self waitForExpectationsWithTimeout:4 handler:^(NSError *error) {
-        XCTAssert(error == nil, @"Should have fulfilled expectation");
+    [self waitForExpectationsWithTimeout:4 handler:^(NSError *error) {}];
+}
+
+- (void)testCancelCompletion {
+    [AwwApi clearThumbnailCache];
+    AwwPost* goodPost = [self goodPostObject];
+    
+    XCTestExpectation* expectation = [self expectationWithDescription:@"Slow web expectation"];
+    [AwwApi thumbnailForPost:goodPost completion:^(UIImage *image) {
+        // should never get called
+        XCTAssert(NO, @"Should never get called");
+        [expectation fulfill];
+    }];
+    [AwwApi cancelThumbnailCompletionForPost:goodPost];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [expectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
+        // just waiting a very long time to prove its not just slow internet
     }];
 }
 

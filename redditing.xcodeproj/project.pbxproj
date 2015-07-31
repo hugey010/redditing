@@ -100,22 +100,15 @@
 			name = Api;
 			sourceTree = "<group>";
 		};
-		1E67C2CB1B6B159B00012A3A /* Controllers */ = {
+		1E67C2CC1B6B15A000012A3A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				4D66A5A01A4328DD00C35E75 /* AwwTableViewController.h */,
 				4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		1E67C2CC1B6B15A000012A3A /* UIViews */ = {
-			isa = PBXGroup;
-			children = (
 				1E67C2C51B6B148800012A3A /* AwwTableViewCell.h */,
 				1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */,
 			);
-			name = UIViews;
+			name = View;
 			sourceTree = "<group>";
 		};
 		1EE13CCE1B6AF992004821DE /* Models */ = {
@@ -149,8 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				1E5614691B6B201F00AB53BC /* Api */,
-				1E67C2CC1B6B15A000012A3A /* UIViews */,
-				1E67C2CB1B6B159B00012A3A /* Controllers */,
+				1E67C2CC1B6B15A000012A3A /* View */,
 				1EE13CCE1B6AF992004821DE /* Models */,
 				4D66A59D1A4328DD00C35E75 /* AppDelegate.h */,
 				4D66A59E1A4328DD00C35E75 /* AppDelegate.m */,

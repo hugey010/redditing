@@ -14,10 +14,12 @@
 NSString* const kErrorUserInfoKey = @"message";
 
 static NSMutableDictionary* thumbnails;
+static NSMutableDictionary* canceledThumbnails;
 static NSRange successRange;
 
 + (void)initialize {
     thumbnails = [NSMutableDictionary dictionary];
+    canceledThumbnails = [NSMutableDictionary dictionary];
     successRange = NSMakeRange(200, 299);
 }
 
@@ -63,13 +65,17 @@ static NSRange successRange;
             });
         }
     }];
-    
 }
 
 + (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion {
-    NSString* urlString = [NSString stringWithFormat:@"%@", post.thumbnailURL];
-    if (thumbnails[urlString]) {
-        completion(thumbnails[urlString]);
+    if (post.urlString) {
+        [canceledThumbnails removeObjectForKey:post.urlString];
+    }
+    
+    if (thumbnails[post.urlString]) {
+        if (!canceledThumbnails[post.urlString]) {
+            completion(thumbnails[post.urlString]);
+        }
     } else {
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:post.thumbnailURL];
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -80,18 +86,26 @@ static NSRange successRange;
             if (!connectionError && NSLocationInRange(statusCode, successRange)) {
                 UIImage* image = [UIImage imageWithData:data];
                 if (image) {
-                    thumbnails[urlString] = image;
+                    thumbnails[post.urlString] = image;
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(image);
+                    if (!canceledThumbnails[post.urlString]) {
+                        completion(image);
+                    }
                 });
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil);
+                    if (!canceledThumbnails[post.urlString]) {
+                        completion(nil);
+                    }
                 });
             }
         }];
     }
+}
+
++ (void)cancelThumbnailCompletionForPost:(AwwPost*)post {
+    canceledThumbnails[post.urlString] = @(YES);
 }
 
 + (void)clearThumbnailCache {

@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UILabel* postTitleLabel;
 @property (nonatomic, strong) UIImageView* thumbnailImageView;
+@property (nonatomic, strong) AwwPost* post;
 
 @end
 
@@ -53,10 +54,14 @@
 }
 
 - (void)prepareForReuse {
+    [AwwApi cancelThumbnailCompletionForPost:_post];
+    
     [super prepareForReuse];
 }
 
 - (void)setupWithPost:(AwwPost*)post {
+    _post = post;
+    
     _postTitleLabel.text = post.title;
    
     _thumbnailImageView.image = nil;

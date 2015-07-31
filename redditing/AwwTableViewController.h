@@ -9,6 +9,5 @@
 
 @interface AwwTableViewController : UITableViewController
 
-
 @end
 

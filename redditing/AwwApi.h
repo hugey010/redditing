@@ -27,6 +27,10 @@ extern NSString* const kAwwApiErrorUserInfoKey;
     Completion block must NOT be nil */
 + (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion;
 
+/** Use when a cell is being reused and you dont want its completion block get called.
+    Often used for UITableViewCells on prepareForReuse. */
++ (void)cancelThumbnailCompletionForPost:(AwwPost*)post;
+
 /** clears the thumbnail cache, normally just used in testing */
 + (void)clearThumbnailCache;
 

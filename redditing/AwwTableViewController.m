@@ -56,13 +56,12 @@ static NSString* const cellIdentifier = @"cell";
     CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
     CGRect startRect = CGRectMake(cellRect.origin.x + 8, cellRect.origin.y + 2, 80, 80);
     
-
     AwwPost* post = self.redditPosts[indexPath.row];
     
     CGRect frame = self.view.frame;
     CGRect endRect = CGRectMake(frame.size.width / 2.0 - 150, frame.size.height / 2.0 - 150 + tableView.contentOffset.y, 300, 300);
     
-    _blownUpView = [[AwwPopupView alloc] initWithURL:post.thumbnailURL];
+    _blownUpView = [[AwwPopupView alloc] initWithURL:post.url];
     [self.view addSubview:_blownUpView];
     [_blownUpView performAnimationFromRect:startRect toRect:endRect];
 }

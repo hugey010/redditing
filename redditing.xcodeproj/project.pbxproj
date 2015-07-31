@@ -11,6 +11,7 @@
 		1E56146C1B6B203500AB53BC /* AwwApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E56146B1B6B203500AB53BC /* AwwApi.m */; };
 		1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */; };
 		1E67C2CA1B6B158E00012A3A /* AwwPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C91B6B158E00012A3A /* AwwPost.m */; };
+		1E72B7C71B6B3E570059F4DE /* AwwApiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E72B7C61B6B3E570059F4DE /* AwwApiTests.m */; };
 		4D66A59C1A4328DD00C35E75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59B1A4328DD00C35E75 /* main.m */; };
 		4D66A59F1A4328DD00C35E75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A59E1A4328DD00C35E75 /* AppDelegate.m */; };
 		4D66A5A21A4328DD00C35E75 /* AwwTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D66A5A11A4328DD00C35E75 /* AwwTableViewController.m */; };
@@ -40,6 +41,7 @@
 		1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwTableViewCell.m; sourceTree = "<group>"; };
 		1E67C2C81B6B158E00012A3A /* AwwPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwPost.h; sourceTree = "<group>"; };
 		1E67C2C91B6B158E00012A3A /* AwwPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwPost.m; sourceTree = "<group>"; };
+		1E72B7C61B6B3E570059F4DE /* AwwApiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwApiTests.m; sourceTree = "<group>"; };
 		4D66A5961A4328DD00C35E75 /* Redditing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redditing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D66A59A1A4328DD00C35E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D66A59B1A4328DD00C35E75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		1E3111291B6B343600F517C1 /* redditingTests */ = {
 			isa = PBXGroup;
 			children = (
+				1E72B7C61B6B3E570059F4DE /* AwwApiTests.m */,
 				1E56146D1B6B316D00AB53BC /* AwwPostTest.m */,
 				1E31112C1B6B343600F517C1 /* redditingTests.m */,
 				1E31112A1B6B343600F517C1 /* Supporting Files */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E72B7C71B6B3E570059F4DE /* AwwApiTests.m in Sources */,
 				1E3111421B6B347F00F517C1 /* AwwPostTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

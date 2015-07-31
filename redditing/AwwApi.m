@@ -22,7 +22,8 @@ static NSRange successRange;
 }
 
 + (void)postsInSubreddit:(NSString*)subreddit completion:(PostsBlock)completion {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.reddit.com/r/aww"]];
+    NSString* urlString = [NSString stringWithFormat:@"http://api.reddit.com/r/%@", subreddit];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -39,19 +40,24 @@ static NSRange successRange;
                 for (NSDictionary* dict in responseDictionary[@"data"][@"children"]) {
                     AwwPost *post = [[AwwPost alloc] initWithDictionary:dict];
                     [mappedPosts addObject:post];
-                
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(mappedPosts, nil);
-                });
+                if (mappedPosts.count > 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(mappedPosts, nil);
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(nil, [self errorWithStatusCode:-1 andMessage:@"No Posts!"]);
+                    });
+                }
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, error);
+                    completion(nil, [self errorWithStatusCode:error.code andMessage:@"Error parsing JSON"]);
                 });
             }
         } else {
             NSString* errorMessage = [NSString stringWithFormat:@"Unable to load posts at %@.", request.URL];
-            NSError* error = [NSError errorWithDomain:@"com.beamtechnologies.error" code:statusCode userInfo:@{kErrorUserInfoKey : errorMessage}];
+            NSError* error = [self errorWithStatusCode:statusCode andMessage:errorMessage];
             dispatch_async(dispatch_get_main_queue(), ^{
                 completion(nil, error);
             });
@@ -79,9 +85,19 @@ static NSRange successRange;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(image);
                 });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil);
+                });
             }
         }];
     }
+}
+
+#pragma mark - private
+
++ (NSError*)errorWithStatusCode:(NSInteger)code andMessage:(NSString*)message {
+    return [NSError errorWithDomain:@"com.beamtechnologies.error" code:code userInfo:@{kErrorUserInfoKey : message}];
 }
 
 @end

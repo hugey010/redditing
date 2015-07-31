@@ -19,11 +19,12 @@ typedef void (^ThumbnailBlock)(UIImage*);
 
 extern NSString* const kAwwApiErrorUserInfoKey;
 
-/** Loads posts from reddit in a given subreddit. Delivers completion on main thread. */
+/** Loads posts from reddit in a given subreddit. Delivers completion on main thread.
+    Completion block must NOT be nil */
 + (void)postsInSubreddit:(NSString*)subreddit completion:(PostsBlock)completion;
 
-/** Loads posts from reddit in a given subreddit. Delivers completion on main thread.
- Caches requests based on url */
+/** Loads posts from reddit in a given subreddit. Delivers completion on main thread. Caches requests based on url.
+    Completion block must NOT be nil */
 + (void)thumbnailForPost:(AwwPost*)post completion:(ThumbnailBlock)completion;
 
 @end

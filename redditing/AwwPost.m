@@ -16,15 +16,7 @@
    
     NSDictionary* dataDict = dictionary[@"data"];
     _title = dataDict[@"title"];
-   
-    NSDictionary* mediaDict = dataDict[@"media"];
-    if ([mediaDict isEqual:[NSNull null]]) {
-        mediaDict = dataDict[@"secure_media"];
-    }
-    if (![mediaDict isEqual:[NSNull null]]) {
-        NSDictionary* oembed = mediaDict[@"oembed"];
-        _thumbnailURL = [NSURL URLWithString:oembed[@"thumbnail_url"]];
-    }
+    _thumbnailURL = [NSURL URLWithString:dataDict[@"thumbnail"]];
     
     return self;
 }

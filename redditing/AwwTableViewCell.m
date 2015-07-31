@@ -38,15 +38,14 @@
     NSDictionary* views = NSDictionaryOfVariableBindings(_postTitleLabel, _thumbnailImageView);
     NSDictionary* metrics = @{@"padding" : @(8),
                              @"spacing" : @(12),
-                             @"min" : @(40)
+                             @"min" : @(40),
+                              @"tightPadding" : @(2)
                              };
-    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-padding-[_thumbnailImageView(>=min)]-padding-|" options:kNilOptions metrics:metrics views:views]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-tightPadding-[_thumbnailImageView(>=min)]-tightPadding-|" options:kNilOptions metrics:metrics views:views]];
     [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-padding-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
-    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[_thumbnailImageView(>=min)]-spacing-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[_thumbnailImageView(80)]-spacing-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
     NSLayoutConstraint* thumbnailSquareConstraint = [NSLayoutConstraint constraintWithItem:_thumbnailImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_thumbnailImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
     [_thumbnailImageView addConstraint:thumbnailSquareConstraint];
-    NSLayoutConstraint* thumbnailMaxWidthConstraint = [NSLayoutConstraint constraintWithItem:_thumbnailImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:0.25 constant:0];
-    [contentView addConstraint:thumbnailMaxWidthConstraint];
     NSLayoutConstraint* thumbnailCenterYConstraint = [NSLayoutConstraint constraintWithItem:_thumbnailImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0];
     [contentView addConstraint:thumbnailCenterYConstraint];
     
@@ -63,6 +62,8 @@
     _thumbnailImageView.image = nil;
     [AwwApi thumbnailForPost:post completion:^(UIImage *image) {
         self.thumbnailImageView.image = image;
+        [self setNeedsLayout];
+        [self layoutIfNeeded];
     }];
 }
 

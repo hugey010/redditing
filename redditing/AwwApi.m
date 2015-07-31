@@ -14,9 +14,11 @@
 NSString* const kErrorUserInfoKey = @"message";
 
 static NSMutableDictionary* thumbnails;
+static NSRange successRange;
 
 + (void)initialize {
     thumbnails = [NSMutableDictionary dictionary];
+    successRange = NSMakeRange(200, 299);
 }
 
 + (void)postsInSubreddit:(NSString*)subreddit completion:(PostsBlock)completion {
@@ -26,7 +28,7 @@ static NSMutableDictionary* thumbnails;
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
         NSInteger statusCode = [httpResponse statusCode];
-        if (!connectionError && NSLocationInRange(statusCode, NSMakeRange(200, 299))) {
+        if (!connectionError && NSLocationInRange(statusCode, successRange)) {
             NSError *error = nil;
             NSDictionary *responseDictionary = [NSJSONSerialization
                                                 JSONObjectWithData:data
@@ -69,7 +71,7 @@ static NSMutableDictionary* thumbnails;
         [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             NSInteger statusCode = [httpResponse statusCode];
-            if (!connectionError && NSLocationInRange(statusCode, NSMakeRange(200, 299))) {
+            if (!connectionError && NSLocationInRange(statusCode, successRange)) {
                 UIImage* image = [UIImage imageWithData:data];
                 if (image) {
                     thumbnails[urlString] = image;

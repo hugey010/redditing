@@ -17,7 +17,7 @@ static NSMutableDictionary* thumbnails;
 static NSMutableDictionary* canceledThumbnails;
 static NSRange successRange;
 
-+ (void)initialize {
++ (void)load {
     thumbnails = [NSMutableDictionary dictionary];
     canceledThumbnails = [NSMutableDictionary dictionary];
     successRange = NSMakeRange(200, 299);

@@ -29,6 +29,7 @@
     _postTitleLabel = [[UILabel alloc] init];
     _postTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _postTitleLabel.numberOfLines = 0;
+    _postTitleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17];
     [contentView addSubview:_postTitleLabel];
     
     _thumbnailImageView = [[UIImageView alloc] init];
@@ -42,7 +43,7 @@
                              @"min" : @(40),
                               @"tightPadding" : @(2)
                              };
-    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-tightPadding-[_thumbnailImageView]-tightPadding@999-|" options:kNilOptions metrics:metrics views:views]];
+    [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|->=tightPadding-[_thumbnailImageView]->=tightPadding-|" options:kNilOptions metrics:metrics views:views]];
     [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-padding-[_postTitleLabel]-padding@999-|" options:kNilOptions metrics:metrics views:views]];
     [contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-padding-[_thumbnailImageView(80)]-spacing-[_postTitleLabel]-padding-|" options:kNilOptions metrics:metrics views:views]];
     NSLayoutConstraint* thumbnailSquareConstraint = [NSLayoutConstraint constraintWithItem:_thumbnailImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_thumbnailImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];

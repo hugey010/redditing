@@ -25,11 +25,14 @@ static NSString* const cellIdentifier = @"cell";
     
     [self.tableView registerClass:[AwwTableViewCell class] forCellReuseIdentifier:cellIdentifier];
     self.tableView.estimatedRowHeight = 56;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, self.tabBarController.tabBar.frame.size.height, 0);
     
     [AwwApi postsInSubreddit:@"aww" completion:^(NSArray *posts, NSError *error) {
         if (!error) {
             self.redditPosts = posts;
             [self.tableView reloadData];
+        } else {
+            
         }
     }];
 }

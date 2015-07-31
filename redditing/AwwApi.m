@@ -11,7 +11,7 @@
 
 @implementation AwwApi
 
-NSString* const kErrorUserInfoKey = @"message";
+NSString* const kAwwApiErrorUserInfoKey = @"message";
 
 static NSMutableDictionary* thumbnails;
 static NSMutableDictionary* canceledThumbnails;
@@ -115,7 +115,7 @@ static NSRange successRange;
 #pragma mark - private
 
 + (NSError*)errorWithStatusCode:(NSInteger)code andMessage:(NSString*)message {
-    return [NSError errorWithDomain:@"com.beamtechnologies.error" code:code userInfo:@{kErrorUserInfoKey : message}];
+    return [NSError errorWithDomain:@"com.beamtechnologies.error" code:code userInfo:@{kAwwApiErrorUserInfoKey : message}];
 }
 
 @end

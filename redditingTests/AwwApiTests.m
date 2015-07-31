@@ -22,7 +22,7 @@
     XCTestExpectation* expectation = [self expectationWithDescription:@"Error expectation"];
     [AwwApi postsInSubreddit:@"a_subreddit_that_just_cant_exist!" completion:^(NSArray *posts, NSError *error) {
         XCTAssert(error != nil, @"Should have error");
-        XCTAssert([error.userInfo[@"message"] length] > 0, @"Custom error message should be set");
+        XCTAssert([error.userInfo[kAwwApiErrorUserInfoKey] length] > 0, @"Custom error message should be set");
         [expectation fulfill];
     }];
     

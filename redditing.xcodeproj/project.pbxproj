@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E31113C1B6B346A00F517C1 /* redditingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E31113B1B6B346A00F517C1 /* redditingTests.m */; };
 		1E3111421B6B347F00F517C1 /* AwwPostTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E56146D1B6B316D00AB53BC /* AwwPostTest.m */; };
 		1E56146C1B6B203500AB53BC /* AwwApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E56146B1B6B203500AB53BC /* AwwApi.m */; };
 		1E67C2C71B6B148800012A3A /* AwwTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E67C2C61B6B148800012A3A /* AwwTableViewCell.m */; };
@@ -34,8 +33,6 @@
 		1E31112B1B6B343600F517C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E31112C1B6B343600F517C1 /* redditingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = redditingTests.m; sourceTree = "<group>"; };
 		1E3111371B6B346A00F517C1 /* redditingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = redditingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E31113A1B6B346A00F517C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E31113B1B6B346A00F517C1 /* redditingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = redditingTests.m; sourceTree = "<group>"; };
 		1E56146A1B6B203500AB53BC /* AwwApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwwApi.h; sourceTree = "<group>"; };
 		1E56146B1B6B203500AB53BC /* AwwApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwApi.m; sourceTree = "<group>"; };
 		1E56146D1B6B316D00AB53BC /* AwwPostTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwwPostTest.m; sourceTree = "<group>"; };
@@ -53,7 +50,6 @@
 		4D66A5A71A4328DD00C35E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D66A5A91A4328DD00C35E75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D66A5AC1A4328DD00C35E75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4D66A5B71A4328DD00C35E75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,23 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				1E31112B1B6B343600F517C1 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1E3111381B6B346A00F517C1 /* redditingTests */ = {
-			isa = PBXGroup;
-			children = (
-				1E31113B1B6B346A00F517C1 /* redditingTests.m */,
-				1E3111391B6B346A00F517C1 /* Supporting Files */,
-			);
-			path = redditingTests;
-			sourceTree = "<group>";
-		};
-		1E3111391B6B346A00F517C1 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1E31113A1B6B346A00F517C1 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -149,9 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4D66A5981A4328DD00C35E75 /* redditing */,
-				4D66A5B51A4328DD00C35E75 /* redditingTests */,
 				1E3111291B6B343600F517C1 /* redditingTests */,
-				1E3111381B6B346A00F517C1 /* redditingTests */,
 				4D66A5971A4328DD00C35E75 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -187,22 +164,6 @@
 			children = (
 				4D66A59A1A4328DD00C35E75 /* Info.plist */,
 				4D66A59B1A4328DD00C35E75 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4D66A5B51A4328DD00C35E75 /* redditingTests */ = {
-			isa = PBXGroup;
-			children = (
-				4D66A5B61A4328DD00C35E75 /* Supporting Files */,
-			);
-			path = redditingTests;
-			sourceTree = "<group>";
-		};
-		4D66A5B61A4328DD00C35E75 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4D66A5B71A4328DD00C35E75 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -307,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E31113C1B6B346A00F517C1 /* redditingTests.m in Sources */,
 				1E3111421B6B347F00F517C1 /* AwwPostTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +465,7 @@
 				1E3111411B6B346A00F517C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D66A5911A4328DD00C35E75 /* Build configuration list for PBXProject "redditing" */ = {
 			isa = XCConfigurationList;

@@ -43,24 +43,24 @@ static NSString* const cellIdentifier = @"cell";
     }];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self removeBlownupView];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (_blownUpView) {
-        [_blownUpView removeFromSuperview];
-    }
+    [self removeBlownupView];
     
     // showing the bigger view with a cool animation
     CGRect cellRect = [tableView rectForRowAtIndexPath:indexPath];
     CGRect startRect = CGRectMake(cellRect.origin.x + 8, cellRect.origin.y + 2, 80, 80);
-    
-    AwwPost* post = self.redditPosts[indexPath.row];
-    
     CGRect frame = self.view.frame;
     CGRect endRect = CGRectMake(frame.size.width / 2.0 - 150, frame.size.height / 2.0 - 150 + tableView.contentOffset.y, 300, 300);
     
+    AwwPost* post = self.redditPosts[indexPath.row];
     _blownUpView = [[AwwPopupView alloc] initWithURL:post.url];
     [self.view addSubview:_blownUpView];
     [_blownUpView performAnimationFromRect:startRect toRect:endRect];
@@ -69,9 +69,7 @@ static NSString* const cellIdentifier = @"cell";
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (_blownUpView) {
-        [_blownUpView removeFromSuperview];
-    }
+    [self removeBlownupView];
 }
 
 #pragma mark - UITableViewDataSource
@@ -88,6 +86,14 @@ static NSString* const cellIdentifier = @"cell";
     AwwTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     [cell setupWithPost:self.redditPosts[indexPath.row]];
     return cell;
+}
+
+#pragma mark - private
+
+- (void)removeBlownupView {
+    if (_blownUpView) {
+        [_blownUpView removeFromSuperview];
+    }
 }
 
 @end

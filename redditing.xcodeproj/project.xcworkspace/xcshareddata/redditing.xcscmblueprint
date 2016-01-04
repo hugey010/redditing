@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5BD60EE2639A1F645A6AE71EC732F3C829A4E549",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A2F6FAA8BCFD866FB70A092D9C9EFEB8CFE7D511" : 0,
+    "5BD60EE2639A1F645A6AE71EC732F3C829A4E549" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "81EDAF3C-9017-489F-AC0D-4904402A311B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A2F6FAA8BCFD866FB70A092D9C9EFEB8CFE7D511" : "redditing",
+    "5BD60EE2639A1F645A6AE71EC732F3C829A4E549" : "beam-redditing"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "redditing",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "redditing.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:hugey010\/reddit_quiz.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5BD60EE2639A1F645A6AE71EC732F3C829A4E549"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/beamtech\/redditing.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A2F6FAA8BCFD866FB70A092D9C9EFEB8CFE7D511"
+    }
+  ]
+}
